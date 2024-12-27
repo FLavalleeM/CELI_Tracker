@@ -453,7 +453,8 @@ elif page == "Cumulative Return":
     total_months = len(filtered_data)
     percentage_beat_market = (months_beat_market / total_months) * 100 if total_months > 0 else 0
 
-    col1, col2 = st.columns([1, 3])
+    col1, col2, col3 = st.columns([1, 2, 2])  # Three columns (1 for overview, 2 for stats, 2 for pie chart)
+
     with col1:
         st.write("### Performance Overview")
         st.markdown(f"**Percentage of Months Beating Market:** {percentage_beat_market:.1f}%")
@@ -464,3 +465,31 @@ elif page == "Cumulative Return":
             "Fund": "{:.2%}",
             "Market": "{:.2%}"
         }))
+
+    with col3:
+        st.write("### Ticker Allocation")
+        
+        # Get the latest allocation (last row of pivot_percentages)
+        latest_allocation = pivot_percentages.iloc[-1].drop("Date")
+        
+        # Prepare DataFrame for Plotly
+        allocation_df = latest_allocation.reset_index()
+        allocation_df.columns = ["Ticker", "Percentage"]
+
+        # Plot Donut Chart
+        fig_pie = px.pie(
+            allocation_df,
+            names="Ticker",
+            values="Percentage",
+            hole=0.4,  # Donut style
+            title=f"Allocation as of {pivot_percentages['Date'].max().strftime('%Y-%m-%d')}"
+        )
+
+        fig_pie.update_traces(textinfo='percent+label')
+        fig_pie.update_layout(
+            width=500,
+            height=500,
+            showlegend=True
+        )
+        
+        st.plotly_chart(fig_pie, use_container_width=True)
