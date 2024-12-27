@@ -453,7 +453,7 @@ elif page == "Cumulative Return":
     total_months = len(filtered_data)
     percentage_beat_market = (months_beat_market / total_months) * 100 if total_months > 0 else 0
 
-    col1, col2, col3 = st.columns([1.25, 1.5, 3])  # Three columns (1 for overview, 2 for stats, 2 for pie chart)
+    col1, col2, col3 = st.columns([1.75, 1.5, 2])  # Three columns (1 for overview, 2 for stats, 2 for pie chart)
 
     with col1:
         st.write("### Performance Overview")
@@ -497,8 +497,8 @@ elif page == "Cumulative Return":
         # Update layout
         fig_pie.update_traces(textinfo='percent+label')
         fig_pie.update_layout(
-            width=300,
-            height=300,
+            width=500,
+            height=500,
             showlegend=True
         )
 
