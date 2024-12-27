@@ -484,8 +484,8 @@ elif page == "Cumulative Return":
         allocation_df,
         names="Ticker",
         values="Percentage",
-        hole=0.4,  # Donut style
-        title=f"Allocation as of {pivot_percentages['Date'].max().strftime('%Y-%m-%d')}"
+        hole=0.4#,  # Donut style
+        #title=f"Allocation as of {pivot_percentages['Date'].max().strftime('%Y-%m-%d')}"
     )
 
     # Make 0% tickers invisible in legend
