@@ -453,7 +453,7 @@ elif page == "Cumulative Return":
     total_months = len(filtered_data)
     percentage_beat_market = (months_beat_market / total_months) * 100 if total_months > 0 else 0
 
-    col1, col2, col3 = st.columns([1, 2, 2])  # Three columns (1 for overview, 2 for stats, 2 for pie chart)
+    col1, col2, col3 = st.columns([.5, 1.5, 2])  # Three columns (1 for overview, 2 for stats, 2 for pie chart)
 
     with col1:
         st.write("### Performance Overview")
@@ -477,7 +477,7 @@ elif page == "Cumulative Return":
         allocation_df.columns = ["Ticker", "Percentage"]
 
     # Filter out tickers with 0% allocation for plotting
-    allocation_df = allocation_df[allocation_df["Percentage"] > 0]
+    allocation_df = allocation_df[allocation_df["Percentage"] >= 1 ]
 
     # Plot Donut Chart
     fig_pie = px.pie(
@@ -490,7 +490,7 @@ elif page == "Cumulative Return":
 
     # Make 0% tickers invisible in legend
     for trace in fig_pie.data:
-        if trace.labels[trace.values <= 0.01].any():
+        if trace.labels[trace.values == 0].any():
             trace.textfont.color = "rgba(0,0,0,0)"  # Fully transparent
             trace.marker.line.color = "rgba(0,0,0,0)"  # Hide outline if needed
 
