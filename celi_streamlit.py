@@ -339,7 +339,7 @@ elif page == "Cumulative Return":
     ))
     fig2.add_trace(go.Scatter(
         x=filtered_data["MonthYear"].iloc[1:],
-        y=filtered_data["SPX Adjusted Return"].iloc[1:] * 100 if currency == "USD" else filtered_data["TSX Adjusted Return"] * 100,
+        y=filtered_data["SPX Adjusted Return"].iloc[1:] * 100 if currency == "USD" else filtered_data["TSX Adjusted Return"].iloc[1:] * 100,
         mode='markers',
         marker=dict(color='black', size=4),
         name="Market Return"
