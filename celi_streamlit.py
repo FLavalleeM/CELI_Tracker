@@ -328,15 +328,31 @@ elif page == "Cumulative Return":
         combined_data["Adjusted Return"] = combined_data["SPX Adjusted Return"]
     else:
         combined_data["Adjusted Return"] = combined_data["TSX Adjusted Return"]
-    colors = filtered_data["Monthly MWR"].iloc[1:].apply(lambda x: "green" if x > 0 else "red")
+    # Split data into positive and negative returns
+    positive_data = filtered_data[filtered_data["Monthly MWR"] > 0]
+    negative_data = filtered_data[filtered_data["Monthly MWR"] <= 0]
+
     fig2 = go.Figure()
+
+    # Positive Bars (Green)
     fig2.add_trace(go.Bar(
-        x=filtered_data["MonthYear"].iloc[1:],
-        y=filtered_data["Monthly MWR"].iloc[1:] * 100,
-        marker_color=colors,
+        x=positive_data["MonthYear"].iloc[1:],
+        y=positive_data["Monthly MWR"].iloc[1:] * 100,
+        marker_color="green",
         opacity=1,
-        name="Monthly MWR"
+        name="Positive MWR"
     ))
+
+    # Negative Bars (Red)
+    fig2.add_trace(go.Bar(
+        x=negative_data["MonthYear"].iloc[1:],
+        y=negative_data["Monthly MWR"].iloc[1:] * 100,
+        marker_color="red",
+        opacity=1,
+        name="Negative MWR"
+    ))
+
+    # Market Return Scatter
     fig2.add_trace(go.Scatter(
         x=filtered_data["MonthYear"].iloc[1:],
         y=filtered_data["SPX Adjusted Return"].iloc[1:] * 100 if currency == "USD" else filtered_data["TSX Adjusted Return"].iloc[1:] * 100,
@@ -345,11 +361,12 @@ elif page == "Cumulative Return":
         name="Market Return"
     ))
 
+    # Layout
     fig2.update_layout(
         plot_bgcolor="#f7f7f7",
         paper_bgcolor="#2d2d2d",
-        width=2000,  # Use 80% of screen width
-        height=500,   # Keep height the same
+        width=2000,
+        height=500,
         legend=dict(
             orientation="h",
             yanchor="bottom",
@@ -359,6 +376,7 @@ elif page == "Cumulative Return":
         ),
         autosize=True
     )
+
 
 
     col1, col2 = st.columns([2, 1])
