@@ -490,7 +490,7 @@ elif page == "Cumulative Return":
 
     # Make 0% tickers invisible in legend
     for trace in fig_pie.data:
-        if trace.labels[trace.values <= 1].any():
+        if trace.labels[trace.values <= 0.01].any():
             trace.textfont.color = "rgba(0,0,0,0)"  # Fully transparent
             trace.marker.line.color = "rgba(0,0,0,0)"  # Hide outline if needed
 
