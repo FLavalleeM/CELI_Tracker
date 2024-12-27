@@ -37,7 +37,7 @@ st.markdown(
         margin: auto;
     }
     .plot-container {
-        width: 800px !important;
+        width: 600px !important;
         margin: auto;
     }
     </style>
