@@ -476,32 +476,32 @@ elif page == "Cumulative Return":
         allocation_df = latest_allocation.reset_index()
         allocation_df.columns = ["Ticker", "Percentage"]
 
-    # Filter out tickers with 0% allocation for plotting
-    allocation_df = allocation_df[allocation_df["Percentage"] >= 1 ]
+        # Filter out tickers with 0% allocation for plotting
+        allocation_df = allocation_df[allocation_df["Percentage"] >= 1 ]
 
-    # Plot Donut Chart
-    fig_pie = px.pie(
-        allocation_df,
-        names="Ticker",
-        values="Percentage",
-        hole=0.4#,  # Donut style
-        #title=f"Allocation as of {pivot_percentages['Date'].max().strftime('%Y-%m-%d')}"
-    )
+        # Plot Donut Chart
+        fig_pie = px.pie(
+            allocation_df,
+            names="Ticker",
+            values="Percentage",
+            hole=0.4#,  # Donut style
+            #title=f"Allocation as of {pivot_percentages['Date'].max().strftime('%Y-%m-%d')}"
+        )
 
-    # Make 0% tickers invisible in legend
-    for trace in fig_pie.data:
-        if trace.labels[trace.values == 0].any():
-            trace.textfont.color = "rgba(0,0,0,0)"  # Fully transparent
-            trace.marker.line.color = "rgba(0,0,0,0)"  # Hide outline if needed
+        # Make 0% tickers invisible in legend
+        for trace in fig_pie.data:
+            if trace.labels[trace.values == 0].any():
+                trace.textfont.color = "rgba(0,0,0,0)"  # Fully transparent
+                trace.marker.line.color = "rgba(0,0,0,0)"  # Hide outline if needed
 
-    # Update layout
-    fig_pie.update_traces(textinfo='percent+label')
-    fig_pie.update_layout(
-        width=300,
-        height=300,
-        showlegend=True
-    )
+        # Update layout
+        fig_pie.update_traces(textinfo='percent+label')
+        fig_pie.update_layout(
+            width=300,
+            height=300,
+            showlegend=True
+        )
 
-    st.plotly_chart(fig_pie, use_container_width=True)
+        st.plotly_chart(fig_pie, use_container_width=True)
 
 
