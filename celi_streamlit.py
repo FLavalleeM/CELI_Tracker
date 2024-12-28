@@ -329,15 +329,16 @@ elif page == "Cumulative Return":
     else:
         combined_data["Adjusted Return"] = combined_data["TSX Adjusted Return"]
     # Split data into positive and negative returns
-    positive_data = filtered_data[filtered_data["Monthly MWR"] > 0]
-    negative_data = filtered_data[filtered_data["Monthly MWR"] <= 0]
+    filtered_data1 = filtered_data.iloc[1:].copy()
+    positive_data = filtered_data1[filtered_data1["Monthly MWR"] > 0]
+    negative_data = filtered_data1[filtered_data1["Monthly MWR"] <= 0]
 
     fig2 = go.Figure()
 
     # Positive Bars (Green)
     fig2.add_trace(go.Bar(
-        x=positive_data["MonthYear"].iloc[1:],
-        y=positive_data["Monthly MWR"].iloc[1:] * 100,
+        x=positive_data["MonthYear"],
+        y=positive_data["Monthly MWR"] * 100,
         marker_color="green",
         opacity=1,
         name="Positive MWR"
@@ -345,8 +346,8 @@ elif page == "Cumulative Return":
 
     # Negative Bars (Red)
     fig2.add_trace(go.Bar(
-        x=negative_data["MonthYear"].iloc[1:],
-        y=negative_data["Monthly MWR"].iloc[1:] * 100,
+        x=negative_data["MonthYear"],
+        y=negative_data["Monthly MWR"] * 100,
         marker_color="red",
         opacity=1,
         name="Negative MWR"
