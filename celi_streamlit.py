@@ -322,7 +322,7 @@ elif page == "Cumulative Return":
         xaxis2=dict(domain=[0.05, 1])   # Bar chart starts at 70%, creating separation
     )
 
-    
+    ### Bar chart for Monthly MWR
     combined_data["MonthYear"] = pd.to_datetime(combined_data["MonthYear"], format="%m-%Y")
     if currency == "USD":
         combined_data["Adjusted Return"] = combined_data["SPX Adjusted Return"]
