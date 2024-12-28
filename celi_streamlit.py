@@ -451,7 +451,7 @@ elif page == "Cumulative Return":
     else:
         months_beat_market = (filtered_data["Monthly MWR"].iloc[1:] > filtered_data["TSX Adjusted Return"].iloc[1:]).sum()
 
-    total_months = len(filtered_data)
+    total_months = len(filtered_data.iloc[1:])
     percentage_beat_market = (months_beat_market / total_months) * 100 if total_months > 0 else 0
 
     col1, col2, col3 = st.columns([2, 1.5, 2])  # Three columns (1 for overview, 2 for stats, 2 for pie chart)
