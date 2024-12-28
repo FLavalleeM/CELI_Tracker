@@ -505,4 +505,33 @@ elif page == "Cumulative Return":
 
         st.plotly_chart(fig_pie, use_container_width=True)
 
+    st.markdown("""
+    ---
+    **Analysis Summary:**  
+    - Chart 1 displays the market return trends over the year.  
+    - Chart 2 shows the month-over-month MWR performance.  
+
+    ---
+
+    ### **Understanding Money-Weighted Return (MWR):**  
+    **Money-Weighted Return (MWR)** measures the performance of an investment portfolio by accounting for the size and timing of cash flows.  
+    Unlike **Time-Weighted Return (TWR)**, which isolates the effect of cash flows, **MWR reflects the actual returns experienced by the investor**.  
+
+    **Why Use MWR Over TWR?**  
+    - **Reflects Investor Decisions:** MWR incorporates the effect of cash flow timing, highlighting how contributions and withdrawals impact performance.  
+    - **Real-World Accuracy:** For portfolios with irregular cash flows, MWR offers a more realistic representation of investor returns.  
+
+    ---
+
+    ### **Adjusted Market Returns (SPX/TSX):**  
+    **Adjusted Market Return** in this context refers to the market return that **accounts for the timing of portfolio contributions and trades**.  
+    Rather than simply tracking the overall index return, the adjusted market return reflects:  
+    - **Opportunity Cost of Timing:** Simulates the return if contributions were invested directly into the market index at the time of cash flow.  
+    - **Cash Flow Synchronization:** Adjusts returns to mirror when investments were made, offering a more accurate comparison between the portfolio and the market.  
+    - **Performance Benchmarking:** By aligning investment timing with market returns, this adjustment helps evaluate whether portfolio decisions outperformed or underperformed relative to passive market investment.  
+
+    This approach highlights how portfolio performance is influenced by investment decisions and whether timing choices have added or detracted value compared to simply investing contributions into the broader market.  
+    """)
+
+
 
