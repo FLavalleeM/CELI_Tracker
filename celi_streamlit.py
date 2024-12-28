@@ -507,10 +507,7 @@ elif page == "Cumulative Return":
 
     st.markdown("""
     ---
-    **Analysis Summary:**  
-    - Chart 1 displays the market return trends over the year.  
-    - Chart 2 shows the month-over-month MWR performance.  
-
+    **Comments:** 
     ---
 
     ### **Understanding Money-Weighted Return (MWR):**  
