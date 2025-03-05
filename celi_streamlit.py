@@ -462,10 +462,10 @@ elif page == "Cumulative Return":
 
     with col2:
         st.write("### Portfolio Statistics for Selected Period")
-        st.dataframe(stats_df.style.format({
-            "Fund": "{:.2%}",
-            "Market": "{:.2%}"
-        }))
+        st.dataframe(
+            stats_df.style.format({"Fund": "{:.2%}", "Market": "{:.2%}"}),
+            width=1000  # Increase width as needed
+        )
 
     with col3:
         st.write("### Ticker Allocation")
@@ -499,7 +499,7 @@ elif page == "Cumulative Return":
         fig_pie.update_traces(textinfo='percent+label')
         fig_pie.update_layout(
             width=500,
-            height=500,
+            height=800,
             showlegend=True
         )
 
