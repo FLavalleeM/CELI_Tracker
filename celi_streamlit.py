@@ -499,7 +499,7 @@ elif page == "Cumulative Return":
         fig_pie.update_traces(textinfo='percent+label')
         fig_pie.update_layout(
             width=1000,
-            height=400,
+            height=500,
             showlegend=True
         )
 
