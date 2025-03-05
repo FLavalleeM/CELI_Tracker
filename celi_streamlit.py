@@ -92,7 +92,7 @@ if page == "Cumulative Return":
     slicer = st.sidebar.selectbox(
         "Select Time Range:",
         ["3 Months", "6 Months", "Year to Date", "12 Months", "18 Months", "3 Years", "5 Years", "Since Inception"],
-        index=3  # Default to "Year to Date"
+        index=4  # Default to "Year to Date"
     )
 
 # Adjust based on currency
