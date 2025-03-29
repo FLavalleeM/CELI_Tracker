@@ -366,7 +366,7 @@ elif page == "Cumulative Return":
     # Layout
     fig2.update_layout(
         plot_bgcolor="#f7f7f7",
-        paper_bgcolor="#2d2d2d",
+        paper_bgcolor="rgba(0,0,0,0)",
         width=2000,
         height=500,
         legend=dict(
