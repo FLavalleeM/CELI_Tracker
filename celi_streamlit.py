@@ -207,7 +207,7 @@ if page == "Evolution of Securities":
     # Adjust layout for better visuals
     fig.update_layout(
         plot_bgcolor="#f7f7f7",
-        paper_bgcolor="#2d2d2d"
+        paper_bgcolor="rgba(0,0,0,0)"
     )
 
     # Display the plot
@@ -308,7 +308,7 @@ elif page == "Cumulative Return":
         xaxis_title="Month-Year",
         yaxis_title="Cumulative Return (%)",
         plot_bgcolor="#f7f7f7",
-        paper_bgcolor="#2d2d2d",
+        paper_bgcolor="rgba(0,0,0,0)",
         width=2000,  
         height=500,  
         legend=dict(
