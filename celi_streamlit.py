@@ -15,8 +15,9 @@ custom_css = """
     .stApp {
         background-color: #2d2d2d;
     }
+    /* Remove or override the plot background */
     .css-18e3th9 {
-        background-color: #f7f7f7;
+        background-color: transparent !important;
         border-radius: 10px;
     }
     .css-1d391kg p {
